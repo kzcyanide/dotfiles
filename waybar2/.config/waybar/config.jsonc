@@ -1,0 +1,101 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "network", "cpu", "memory", "temperature", "battery", "custom/weather", "tray"],
+
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "1 •",
+            "2": "2 •",
+            "3": "3 •",
+            "4": "4 •",
+            "5": "5 •",
+            "6": "6 •",
+            "7": "7 •",
+            "8": "8 •",
+            "9": "9 •",
+            "10": "10 •",
+            "urgent": "!",
+            "focused": "◉",
+            "default": "○"
+        }
+    },
+    "sway/mode": {
+        "format": "⚡ <span style=\"italic\">{}</span>"
+    },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "⏰ {:%a, %d %b  %H:%M}"
+    },
+    "cpu": {
+        "format": "⚙️ {usage}%",
+        "tooltip": false,
+        "interval": 1
+    },
+    "memory": {
+        "format": "📊 {}%",
+        "interval": 5
+    },
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": ["❄️", "🌡️", "🔥"],
+        "tooltip": true
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "⚡ {capacity}%",
+        "format-plugged": "🔌 {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": ["🪫", "🔋", "🔋", "🔋", "🔋"]
+    },
+    "network": {
+        "format-wifi": "📶 {essid} ({signalStrength}%)",
+        "format-ethernet": "🌐 {ipaddr}/{cidr}",
+        "tooltip-format": "🖧 {ifname} via {gwaddr}",
+        "format-linked": "🔗 {ifname} (No IP)",
+        "format-disconnected": "⚠ Disconnected",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "on-click": "nm-connection-editor"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "🎧 {icon} {volume}%",
+        "format-bluetooth-muted": "🎧 🔇",
+        "format-muted": "🔇",
+        "format-source": "🎤 {volume}%",
+        "format-source-muted": "🎤 🔇",
+        "format-icons": {
+            "headphone": "🎧",
+            "hands-free": "🎧",
+            "headset": "🎧",
+            "phone": "📱",
+            "portable": "📱",
+            "car": "🚗",
+            "default": ["🔈", "🔉", "🔊"]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/weather": {
+        "format": "{} ",
+        "tooltip": true,
+        "interval": 3600,
+        "exec": "curl -s 'https://wttr.in/?format=1'",
+        "return-type": "json"
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 10
+    }
+}

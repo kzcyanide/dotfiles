@@ -1,0 +1,183 @@
+/* Gruvbox color palette */
+@define-color bg0_hard #1d2021;
+@define-color bg0 #282828;
+@define-color bg0_soft #32302f;
+@define-color bg1 #3c3836;
+@define-color bg2 #504945;
+@define-color bg3 #665c54;
+@define-color bg4 #7c6f64;
+
+@define-color fg0 #fbf1c7;
+@define-color fg1 #ebdbb2;
+@define-color fg2 #d5c4a1;
+@define-color fg3 #bdae93;
+@define-color fg4 #a89984;
+
+@define-color red #cc241d;
+@define-color green #98971a;
+@define-color yellow #d79921;
+@define-color blue #458588;
+@define-color purple #b16286;
+@define-color aqua #689d6a;
+@define-color orange #d65d0e;
+
+@define-color bright_red #fb4934;
+@define-color bright_green #b8bb26;
+@define-color bright_yellow #fabd2f;
+@define-color bright_blue #83a598;
+@define-color bright_purple #d3869b;
+@define-color bright_aqua #8ec07c;
+@define-color bright_orange #fe8019;
+
+* {
+    border: none;
+    border-radius: 0;
+    /* Try multiple font specifications for better compatibility */
+    font-family: "NotoSans Nerd Font", "Symbols Nerd Font", "JetBrainsMono NF", "Hack Nerd Font", "Font Awesome 6 Free", "Font Awesome 6 Brands", "FontAwesome", monospace;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: @bg0_hard;
+    color: @fg1;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+#workspaces button {
+    background-color: @bg0;
+    color: @fg2;
+    padding: 0 5px;
+    margin: 4px 2px;
+    border-radius: 3px;
+}
+
+#workspaces button:hover {
+    background: @bg1;
+    box-shadow: inherit;
+}
+
+#workspaces button.focused {
+    background-color: @bright_aqua;
+    color: @bg0_hard;
+}
+
+#workspaces button.urgent {
+    background-color: @bright_red;
+    color: @bg0_hard;
+}
+
+#mode {
+    background-color: @bg0;
+    color: @bright_yellow;
+    border-bottom: 3px solid @bright_yellow;
+    padding: 0 10px;
+    margin: 0 5px;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#network,
+#pulseaudio,
+#custom\/weather,
+#tray {
+    background-color: @bg0;
+    color: @fg1;
+    padding: 0 10px;
+    margin: 4px 2px;
+    border-radius: 3px;
+}
+
+#clock {
+    background-color: @bg0;
+    color: @bright_blue;
+}
+
+#battery {
+    background-color: @bg0;
+    color: @bright_green;
+}
+
+#battery.charging {
+    background-color: @bg0;
+    color: @bright_green;
+}
+
+#battery.warning:not(.charging) {
+    background-color: @bright_yellow;
+    color: @bg0_hard;
+}
+
+#battery.critical:not(.charging) {
+    background-color: @bright_red;
+    color: @bg0_hard;
+    animation-name: blinker;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blinker {
+    to {
+        background-color: @bg0;
+        color: @bright_red;
+    }
+}
+
+#cpu {
+    background-color: @bg0;
+    color: @bright_purple;
+}
+
+#memory {
+    background-color: @bg0;
+    color: @bright_aqua;
+}
+
+#network {
+    background-color: @bg0;
+    color: @bright_blue;
+}
+
+#network.disconnected {
+    background-color: @bg0;
+    color: @bright_red;
+}
+
+#pulseaudio {
+    background-color: @bg0;
+    color: @bright_yellow;
+}
+
+#pulseaudio.muted {
+    background-color: @bg0;
+    color: @bright_red;
+}
+
+#temperature {
+    background-color: @bg0;
+    color: @bright_orange;
+}
+
+#temperature.critical {
+    background-color: @bright_red;
+    color: @bg0_hard;
+}
+
+#custom\/weather {
+    background-color: @bg0;
+    color: @bright_yellow;
+}
+
+#tray {
+    background-color: @bg0;
+}
