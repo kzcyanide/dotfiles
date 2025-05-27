@@ -1,0 +1,77 @@
+
+
+# Variables
+set $mod Mod4
+set $left h
+set $down j
+set $up k
+set $right l
+set $term kitty
+set $menu dmenu_run
+
+#wallpaper
+output * bg /home/kzcyanide/.config/wallpapers/ign-waifu.png fill
+
+#display
+output Virtual-1 resolution 1920x1080@60.000Hz position 1920,0
+
+### Idle configuration
+#
+# Example configuration:
+#
+# exec swayidle -w \
+#          timeout 300 'swaylock -f -c 000000' \
+#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+#          before-sleep 'swaylock -f -c 000000'
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
+### Input configuration
+#
+# Example configuration:
+#
+#   input "2:14:SynPS/2_Synaptics_TouchPad" {
+#       dwt enabled
+#       tap enabled
+#       natural_scroll enabled
+#       middle_emulation enabled
+#   }
+#
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+
+# Window Configuration
+default_border pixel 2
+default_floating_border pixel 3
+hide_edge_borders smart
+
+# Gaps (optional)
+gaps inner 5
+gaps outer 5
+
+# Title bar
+font pango:monospace 10
+titlebar_border_thickness 1
+titlebar_padding 5 2
+
+# Colors
+client.focused #4c7899 #285577 #ffffff #2e9ef4 #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50 #5f676a
+client.unfocused #333333 #222222 #888888 #292d2e #222222
+client.urgent #2f343a #900000 #ffffff #900000 #900000
+
+
+#Startup apps
+exec waybar
+exec nm-applet --indicator
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec swaync
+
+#keybinds
+include /home/kzcyanide/.config/sway/keybinds.conf
+
+
+
+include /etc/sway/config.d/*

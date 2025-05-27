@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Sway startup script with GTK fixes
+# Sets up Wayland environment variables and launches Sway
+
+# Exit immediately if any command fails
+set -e
+
+# Essential Wayland variables
+export XDG_SESSION_TYPE=wayland
+export XDG_CURRENT_DESKTOP=sway
+
+# GTK specific variables (critical fix)
+export GDK_BACKEND=wayland,x11
+export CLUTTER_BACKEND=wayland,x11
+
+# QT applications
+export QT_QPA_PLATFORM=wayland
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+
+# Firefox/Thunderbird
+export MOZ_ENABLE_WAYLAND=1
+
+# SDL applications
+export SDL_VIDEODRIVER=wayland
+
+# Java applications
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+# Cursor settings
+export XCURSOR_THEME=Adwaita
+export XCURSOR_SIZE=24
+export WLR_NO_HARDWARE_CURSORS=1
+
+exec sway
